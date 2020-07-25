@@ -1,0 +1,96 @@
+plugins {
+    id 'java'
+    id 'maven'
+}
+
+group 'me.lucko'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://libraries.minecraft.net/' }
+}
+
+dependencies {
+    compile 'com.mojang:brigadier:1.0.17'
+}
+
+// Only used occasionally for deployment - not needed for normal builds.
+/*
+apply plugin: 'signing'
+javadoc {
+    options.encoding = 'UTF-8'
+    options.charSet = 'UTF-8'
+    options.links(
+            'https://docs.oracle.com/javase/8/docs/api/'
+    )
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier 'javadoc'
+    from javadoc.destinationDir
+}
+task sourcesJar(type: Jar) {
+    classifier 'sources'
+    from sourceSets.main.allSource
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+signing {
+    useGpgCmd()
+    sign configurations.archives
+}
+uploadArchives {
+    repositories {
+        mavenDeployer {
+
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+            repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/') {
+                authentication(userName: sonatypeUsername, password: sonatypePassword)
+            }
+            //repository(url: 'https://nexus.lucko.me/repository/maven-snapshots/') {
+            //    authentication(userName: luckoNexusUsername, password: luckoNexusPassword)
+            //}
+            pom {
+                project {
+                    name 'commodore-file'
+                    description 'The commodore file format'
+                    url 'https://github.com/lucko/commodore-file'
+                    licenses {
+                        license {
+                            name 'MIT'
+                            url 'https://opensource.org/licenses/MIT'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id 'lucko'
+                            name 'Luck'
+                            url 'https://lucko.me'
+                            email 'git@lucko.me'
+                        }
+                    }
+                    scm {
+                        connection 'scm:git:https://github.com/lucko/commodore-file.git'
+                        developerConnection 'scm:git:git@github.com:lucko/commodore-file.git'
+                        url 'https://github.com/lucko/commodore-file'
+                    }
+                    issueManagement {
+                        system 'GitHub'
+                        url 'https://github.com/lucko/commodore-file/issues'
+                    }
+                }
+            }
+        }
+    }
+}
+*/
