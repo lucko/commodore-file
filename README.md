@@ -2,7 +2,7 @@
 
 The commodore file format is a simplified way of representing Brigadier command node trees in a string form.
 
-This repository a Java parser for the format.
+This repository is a Java parser for the format.
 
 ## Example
 Below is an example commodore file for [Minecraft's `/time` command](https://minecraft.gamepedia.com/Commands/time):
